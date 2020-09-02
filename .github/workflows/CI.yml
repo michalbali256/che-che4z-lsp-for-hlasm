@@ -100,6 +100,7 @@ jobs:
         run: cd build/bin && ./server_test && ./library_test
       - name: Extension Test
         run: npm --prefix clients/vscode-hlasmplugin run test
+      - uses: mxschmitt/action-tmate@v2
       - name: Extension Test Insiders
         run: npm --prefix clients/vscode-hlasmplugin run test:insiders
       - name: Actions artifact
