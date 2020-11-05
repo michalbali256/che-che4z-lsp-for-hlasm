@@ -22,9 +22,9 @@ namespace hlasm_plugin::language_server {
 
 // LOG_INFO is disabled in release, because it writes vast amount of text
 // which takes significant time
-#ifdef _DEBUG
-#    define LOG_ON
-#endif
+
+#define LOG_ON
+
 
 
 #ifdef LOG_ON
