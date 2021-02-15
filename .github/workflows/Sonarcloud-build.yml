@@ -74,7 +74,9 @@ jobs:
           echo -Dsonar.pullrequest.branch=${{ github.head_ref }} > pr-info/head-branch-arg.txt
       - name: Push event info
         if: github.event_name == 'push'
-        run: echo ${{ github.event.ref }} > pr-info/ref.txt
+        run: |
+          mkdir pr-info
+          echo ${{ github.event.ref }} > pr-info/ref.txt
 
       - uses: actions/upload-artifact@v2
         with:
