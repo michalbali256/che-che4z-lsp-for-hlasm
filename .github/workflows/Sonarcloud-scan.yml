@@ -48,18 +48,15 @@ jobs:
             var fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/bw-artifact.zip', Buffer.from(download.data));
       - run: unzip bw-artifact.zip
-      - run: ls -Al
-
       - name: Get ref
         run: echo "REF=$(cat pr-info/ref.txt)" >> $GITHUB_ENV
-
+      - run: mv bw-artifact.zip /tmp/bw-artifact.zip
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: ${{ env.REF }}
-      - run: ls -Al
+      - run: mv /tmp/bw-artifact.zip bw-artifact.zip
       - run: unzip bw-artifact.zip
-      - run: ls -Al
       - name: Get version
         run: echo "VERSION=$(node -e "console.log(require('./clients/vscode-hlasmplugin/package.json').version)")" >> $GITHUB_ENV
 
